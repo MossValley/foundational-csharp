@@ -11,12 +11,12 @@ This C# console application is designed to:
     - divides the values of extra credit assignments by 10 before adding extra credit scores to the sum of exam scores.
 - use the following report format to report student grades: 
 
-    Student         Grade
+    Student         Exam Score      Overal Grade    Extra Credit
 
-    Sophia:         92.2    A-
-    Andrew:         89.6    B+
-    Emma:           85.6    B
-    Logan:          91.2    A-
+    Sophia          92.2            95.88   A       92 (3.68 points)
+    Andrew          89.6            91.38   A-      89 (1.78 points)
+    Emma            85.6            90.94   A-      89 (5.34 points)
+    Logan           91.2            93.12   A       96 (1.92 points)
 */
 int examAssignments = 5;
 
@@ -39,7 +39,7 @@ Console.WriteLine("Student\t\tExam Score\tOveral Grade\tExtra Credit\n");
 The outer foreach loop is used to:
 - iterate through student names 
 - assign a student's grades to the studentScores array
-- sum assignment scores (inner foreach loop)
+- sum the exam and extra credit scores (inner foreach loop)
 - calculate numeric and letter grade
 - write the score report information
 */
@@ -70,8 +70,9 @@ foreach (string name in studentNames)
     decimal currentStudentExtraCreditPoints = 0;
 
     /* 
-    the inner foreach loop sums assignment scores
-    extra credit assignments are worth 10% of an exam score
+    the inner foreach loop 
+    - sums the exam scores
+    - sums the extra credit scores
     */
     foreach (int score in studentScores)
     {
@@ -128,8 +129,8 @@ foreach (string name in studentNames)
     else
         currentStudentLetterGrade = "F";
 
-    // Student         Grade
-    // Sophia:         92.2    A-
+    // Student         Exam Score      Overall Grade   Extra Credit
+    // Sophia          92.2            95.88   A       92 (3.68 pts)
     
     Console.WriteLine($"{currentStudent}\t\t{currentStudentExamScores}\t\t{currentStudentGrade}\t{currentStudentLetterGrade}\t{currentStudentExtraCreditScores} ({currentStudentExtraCreditPoints} points)");
 }
