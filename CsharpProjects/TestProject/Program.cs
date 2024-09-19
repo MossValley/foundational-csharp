@@ -1,16 +1,51 @@
-﻿int[] numbers = { 4, 8, 15, 16, 23, 42 };
-int total = 0;
-bool found = false;
+﻿// SKU = Stock Keeping Unit. 
+// SKU value format: <product #>-<2-letter color code>-<size code>
+string sku = "01-MN-L";
 
-foreach (int number in numbers)
+string[] product = sku.Split('-');
+
+string type = "";
+string color = "";
+string size = "";
+
+if (product[0] == "01")
 {
-    total += number;
-
-    if (number == 42)
-       found = true;
+    type = "Sweat shirt";
+} else if (product[0] == "02")
+{
+    type = "T-Shirt";
+} else if (product[0] == "03")
+{
+    type = "Sweat pants";
+}
+else
+{
+    type = "Other";
 }
 
-if (found) 
-    Console.WriteLine("Set contains 42");
+if (product[1] == "BL")
+{
+    color = "Black";
+} else if (product[1] == "MN")
+{
+    color = "Maroon";
+} else
+{
+    color = "White";
+}
 
-Console.WriteLine($"Total: {total}");
+if (product[2] == "S")
+{
+    size = "Small";
+} else if (product[2] == "M")
+{
+    size = "Medium";
+} else if (product[2] == "L")
+{
+    size = "Large";
+} else
+{
+    size = "One Size Fits All";
+}
+
+Console.WriteLine($"Product: {size} {color} {type}");
