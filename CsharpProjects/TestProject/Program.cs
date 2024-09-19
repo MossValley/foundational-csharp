@@ -1,14 +1,23 @@
-﻿//FizzBuzz challenge
+﻿// Battle challenge
 
-for (int i = 1; i <= 100; i++)
+Random dice = new Random();
+
+int heroHealth = 10;
+int monsterHealth = 10;
+
+while (heroHealth > 0 && monsterHealth > 0) 
 {
-    string print = "";
+    // Player attacks monster
+    int heroAttack = dice.Next(1, 11);
+    monsterHealth -= heroAttack;
+    Console.WriteLine($"Monster was damaged and lost {heroAttack} health and now has {monsterHealth} health");
 
-    if (i % 3 == 0)
-        print = "Fizz";
+    if(monsterHealth < 0) continue;
 
-    if (i % 5 == 0)
-        print = $"{print}Buzz";
-
-    Console.WriteLine($"{i}{(print.Length > 0 ? $"- {print}" : "")}");
+    // Monster attacks player
+    int monsterAttack = dice.Next(1, 11);
+    heroHealth -= monsterAttack;
+    Console.WriteLine($"Hero was damaged and lost {monsterAttack} health and now has {heroHealth} health");
 }
+
+Console.WriteLine(heroHealth > monsterHealth ? "Hero wins!" : "Monster wins!");
