@@ -1,4 +1,4 @@
-﻿string? userInput;
+﻿/* string? userInput;
 Console.WriteLine("Enter an integer value between 5 and 10");
 
 int numberValue = 0;
@@ -20,4 +20,21 @@ while (numberValue < 5 || numberValue > 10)
     }
 }
 
-Console.WriteLine($"Your input value ({numberValue}) has been accepted");
+Console.WriteLine($"Your input value ({numberValue}) has been accepted");*/
+
+string? userInput;
+Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
+
+string[] acceptableRoles = new string[] { "administrator", "manager", "user" };
+
+do 
+{
+    string input = Console.ReadLine();
+    userInput = input == null ? input : input.Trim().ToLower();
+    
+    if (!acceptableRoles.Contains(userInput))
+        Console.WriteLine($"The role name that you entered, \"{userInput}\" is not valid. Enter your role name (Administrator, Manager, or User)");
+
+} while (!acceptableRoles.Contains(userInput));
+
+Console.WriteLine($"Your input value ({userInput}) has been accepted.");
