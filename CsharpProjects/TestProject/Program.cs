@@ -1,23 +1,28 @@
-﻿// Battle challenge
+﻿string? userInput;
+Console.WriteLine("Enter an integer value between 5 and 10");
 
-Random dice = new Random();
+int numberValue = 0;
+bool isNumber = false;
+bool isValidNumber = false;
 
-int heroHealth = 10;
-int monsterHealth = 10;
-
-while (heroHealth > 0 && monsterHealth > 0) 
+do
 {
-    // Player attacks monster
-    int heroAttack = dice.Next(1, 11);
-    monsterHealth -= heroAttack;
-    Console.WriteLine($"Monster was damaged and lost {heroAttack} health and now has {monsterHealth} health");
+    userInput = Console.ReadLine();
+    isNumber = int.TryParse(userInput, out numberValue);
 
-    if(monsterHealth < 0) continue;
+    if (isNumber)
+    {
+        if (numberValue < 5 || numberValue > 10)
+            Console.WriteLine($"You entered {userInput}. Please enter a number between 5 and 10");
+        else
+            isValidNumber = true;
+    }
+    else
+    {
+        Console.WriteLine("Sorry, you entered an invalid number, please try again");
+    }
 
-    // Monster attacks player
-    int monsterAttack = dice.Next(1, 11);
-    heroHealth -= monsterAttack;
-    Console.WriteLine($"Hero was damaged and lost {monsterAttack} health and now has {heroHealth} health");
-}
 
-Console.WriteLine(heroHealth > monsterHealth ? "Hero wins!" : "Monster wins!");
+} while (!isValidNumber);
+
+Console.WriteLine($"Your input value ({numberValue}) has been accepted");
