@@ -27,11 +27,11 @@ Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
 
 string[] acceptableRoles = new string[] { "administrator", "manager", "user" };
 
-do 
+do
 {
     string input = Console.ReadLine();
     userInput = input == null ? input : input.Trim().ToLower();
-    
+
     if (!acceptableRoles.Contains(userInput))
         Console.WriteLine($"The role name that you entered, \"{userInput}\" is not valid. Enter your role name (Administrator, Manager, or User)");
 
