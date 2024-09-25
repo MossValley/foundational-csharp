@@ -22,7 +22,7 @@ while (numberValue < 5 || numberValue > 10)
 
 Console.WriteLine($"Your input value ({numberValue}) has been accepted");*/
 
-string? userInput;
+/* string? userInput;
 Console.WriteLine("Enter your role name (Administrator, Manager, or User)");
 
 string[] acceptableRoles = new string[] { "administrator", "manager", "user" };
@@ -37,4 +37,27 @@ do
 
 } while (!acceptableRoles.Contains(userInput));
 
-Console.WriteLine($"Your input value ({userInput}) has been accepted.");
+Console.WriteLine($"Your input value ({userInput}) has been accepted."); */
+
+string[] myStrings = new string[2] { "I like pizza. I like roast chicken. I like salad", "I like all three of the menu choices" };
+
+for (int i = 0; i < myStrings.Length; i++)
+{
+    string myString = myStrings[i];
+
+    int periodLocation = myString.IndexOf('.');
+
+    do
+    {
+        if (periodLocation == -1) {
+            Console.WriteLine(myString.TrimStart());
+            break;
+        }
+        else {
+            string output = myString.Remove(periodLocation);
+            Console.WriteLine(output.TrimStart());
+            myString = myString.Substring(periodLocation + 1, myString.Length - periodLocation -1 );
+            periodLocation = myString.IndexOf('.');
+        }
+    } while (myString.Length > 0);
+}
